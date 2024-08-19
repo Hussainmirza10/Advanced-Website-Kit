@@ -1,6 +1,13 @@
 // Plugin Imports
 const pluginDirectoryOutput = require("@11ty/eleventy-plugin-directory-output");
 const pluginEleventyNavigation = require("@11ty/eleventy-navigation");
+const pluginShopify = require("eleventy-plugin-shopify");
+
+// Config Imports
+const configShopify = require("./src/config/plugins/shopify");
+
+// Filter Imports
+const filterGetProductsInCollection = require("./src/config/filters/getProductsInCollection");
 
 // Filter Imports
 const filterFormatDate = require("./src/config/filters/formatDate");
@@ -19,6 +26,10 @@ module.exports = function (eleventyConfig) {
     // Allows navigation items to be defined in a scalable way via the front matter
     // https://www.11ty.dev/docs/plugins/navigation/
     eleventyConfig.addPlugin(pluginEleventyNavigation);
+
+    // Queries your Shopify store at build time to expose product and collection data under the `shopify` global object
+    // https://github.com/dleatherman/eleventy-plugin-shopify
+    eleventyConfig.addPlugin(pluginShopify, configShopify);
 
     /**
      *  PASSTHROUGH'S
@@ -41,6 +52,8 @@ module.exports = function (eleventyConfig) {
 
     // Turns a date from ISO format to a more human-readable one
     eleventyConfig.addFilter("formatDate", filterFormatDate);
+
+    eleventyConfig.addFilter("getProductsInCollection", filterGetProductsInCollection);
 
     return {
         dir: {
