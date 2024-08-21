@@ -4,21 +4,22 @@
 @media only screen and (min-width: 0rem) {
     :root {
         /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
-        --primary: #ffba19;
+        --primary: #e1b656;
         --primaryLight: #ffd675;
-        --secondary: #001f3f;
+        --secondary: #e1b656;
         --secondaryLight: #001f3f;
-        --headerColor: #1a1a1a;
-        --bodyTextColor: #4e4b66;
+        --headerColor: #001f3f;
+        --titleColor:#e1b656;
+        --bodyTextColor: #6a6f73;
         --bodyTextColorWhite: #fafbfc;
         /* 13px - 16px */
-        --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+        --topperFontSize: clamp(2.8125rem, 1.6vw, 1rem);
         /* 31px - 49px */
         --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
         --bodyFontSize: 1rem;
         /* 60px - 100px top and bottom */
         --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
-        --bodyFontFamily: Arial, Helvetica, sans-serif;
+        --bodyFontFamily: 'Playfair Display', serif;
     }
     body {
         font-family: var(--bodyFontFamily);
@@ -698,9 +699,11 @@
         box-sizing: border-box;
         padding: 0;
         background-color: #fff;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+       
         position: fixed;
         z-index: 10000;
+        background: transparent;
+        position: absolute;
     }
     #cs-navigation .cs-top-bar {
         width: 100%;
@@ -841,12 +844,12 @@
     #cs-navigation .cs-container {
         width: 100%;
         max-width: 80rem;
-        margin: auto;
+       
         /* prevents padding from affectin gheight */
         box-sizing: border-box;
-        padding: 0 1rem;
+        
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         gap: 1.5rem;
         position: relative;
@@ -965,6 +968,9 @@
 }
 /* Larger Desktop - 1200px */
 @media only screen and (min-width: 100rem) {
+    #cs-navigation {
+        background: transparent;
+    }
     #cs-navigation .cs-donate {
         margin-left: auto;
         display: flex;
